@@ -1,19 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-export default function App() {
+import FirstScreen from "./screens/First";
+import SecondScreen from "./screens/Second";
+import ThirdScreen from "./screens/Third";
+
+const Tab = createMaterialTopTabNavigator();
+
+function MyTabs() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator tabBarPosition="bottom">
+        <Tab.Screen name="First" component={FirstScreen} />
+        <Tab.Screen name="Second" component={SecondScreen} />
+        <Tab.Screen name="Third" component={ThirdScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default MyTabs;
